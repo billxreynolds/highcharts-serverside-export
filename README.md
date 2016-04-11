@@ -1,12 +1,45 @@
 Highcharts Serverside Export
 ============================
 
+This is a fork of the Highcharts Serverside Export project from One2Team.
+
+The original project can be found here:
+
+https://github.com/one2team/highcharts-serverside-export
+
+I forked this project as I wanted to move the build system outside of
+Eclipse. So, I've enabled this project for Maven - it should build
+out of the box with the following command:
+
+> $ mvn clean package
+
+However, I've found that running Rhino+batik on the server-side has not 
+been very performant. The Highcharts team reached the same conclusion, 
+and as a result, they took a different approach to server-side rendering of 
+charts; they have built a solution that requires phantomjs and a standalone
+servlet container. This solution works well - if you have no restrictions
+on what you can deploy to your environment I would strongly encourage
+you to use it:
+
+https://github.com/highcharts/highcharts-export-server
+
+However, if you are limited in what you can deploy to your environment, 
+or want to avoid phantomjs for some reason, then this project might be of
+use.
+
+The original notes from One2Team continue below.
+
+--------------------------------------------
+
+
 The primary goal of the Highcharts Serverside Export framework (HSE) is to provide a java API for Highcharts including image generation capabilities.
 
 Solution features :
 
 * Java API corresponding to [Highcharts](http://www.highcharts.com) model (kept compatible with Highcharts model hierarchy and properties),
 * Rhino-Apache Batik based renderer : java ChartOptions ==> Rhino ==> Highcharts ==> SVG ==> image (png, JPEG, etc...),
+
+
 
 Usage
 -----
